@@ -12,7 +12,7 @@ In this repository, I have added all the tasks that was assigned in my Node.js t
 ## Running this project
 - Clone the repository.
 
-    ``git clone ``
+    ``git clone https://github.com/ayxsth/node-training-tasks.git``
 - Open in the Text Editor. *(optional)*
 - Run the terminal and change the directory.
 - Install all the required libraries.
