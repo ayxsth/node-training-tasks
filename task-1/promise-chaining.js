@@ -10,10 +10,16 @@ const promiseOne = new Promise((resolve, reject) => {
     });
 });
 
-promiseOne.then(({ data }) => {
+const promiseTwo = (body) => new Promise(resolve => {
+    return resolve(body.data);
+});
+
+promiseOne.then(body => {
+    return promiseTwo(body);
+}).then(data => {
     data.forEach(datum => {
         console.log(datum, '\n');
-    })
+    });
 }).catch(e => {
     console.log(e);
 });
