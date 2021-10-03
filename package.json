@@ -1,0 +1,23 @@
+{
+  "name": "node-tasks",
+  "version": "1.0.0",
+  "description": "In this repository, I have added all the tasks that was assigned in my Node.js training sessions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayxsth/node-training-tasks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayxsth/node-training-tasks/issues"
+  },
+  "homepage": "https://github.com/ayxsth/node-training-tasks#readme",
+  "dependencies": {
+    "postman-request": "^2.88.1-postman.30"
+  }
+}
