@@ -4,8 +4,8 @@ In this repository, I have added all the tasks that was assigned in my Node.js t
 
 ## Content
 
--   [Use of Promises](https://github.com/ayxsth/node-training-tasks/tree/master/promise)
--   [Use of Async-Await](https://github.com/ayxsth/node-training-tasks/tree/master/async-await)
+-   [Use of Promises](https://github.com/ayxsth/node-training-tasks/tree/master/1-promise)
+-   [Use of Async-Await](https://github.com/ayxsth/node-training-tasks/tree/master/2-async-await)
 
 ## Prerequisite
 
