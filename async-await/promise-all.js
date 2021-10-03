@@ -1,4 +1,4 @@
-const callAPI = require('./call-api');
+const callAPI = require("./call-api");
 
 const promiseOne = new Promise((resolve, reject) => {
     callAPI((error, body) => {
@@ -6,7 +6,7 @@ const promiseOne = new Promise((resolve, reject) => {
             return reject(error);
         }
 
-        return resolve(body);
+        resolve(body);
     });
 });
 
@@ -16,12 +16,17 @@ const promiseTwo = new Promise((resolve, reject) => {
             return reject(error);
         }
 
-        return resolve(body);
+        resolve(body);
     });
 });
 
-Promise.all([promiseOne, promiseTwo]).then(result => {
-    console.log(result);
-}).catch(e => {
-    console.log(e);
-});
+const callPromises = async () => {
+    try {
+        const result = await Promise.all([promiseOne, promiseTwo]);
+        console.log(result);
+    } catch (e) {
+        console.log("Error occurred!");
+    }
+};
+
+callPromises();
