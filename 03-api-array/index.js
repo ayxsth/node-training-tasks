@@ -1,11 +1,13 @@
 const express = require("express");
 const categoryRouter = require("./routers/category");
+const bookRouter = require("./routers/book");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(categoryRouter);
+app.use(bookRouter);
 
 app.get("/", (req, res) => {
     res.send("The server is active.");
