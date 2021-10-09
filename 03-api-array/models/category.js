@@ -9,7 +9,10 @@ let categories = [
 
 const findIndex = (id) => categories.findIndex((category) => category.id == id);
 
+const findCategory = (id) => categories.find((category) => category.id == id);
+
 module.exports = {
     categories,
-    findIndex
+    findIndex,
+    findCategory
 };
