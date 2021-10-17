@@ -6,13 +6,18 @@ const router = express.Router();
 
 router.post("/books", (req, res) => {
     try {
-        const allowedProperties = ["title", "category", "author"];
+        const allowedProperties = [
+            "title",
+            "description",
+            "category",
+            "author"
+        ];
         const properties = Object.keys(req.body);
         //check if the provided properties exists in the object
         const isValid = checkProperty(properties, allowedProperties);
 
         //check the body length and if valid
-        if (properties.length !== 3 || !isValid) {
+        if (properties.length !== 4 || !isValid) {
             return res
                 .status(400)
                 .send({ error: "Invalid or insufficient properties." });
@@ -73,13 +78,18 @@ router.get("/books/:id", (req, res) => {
 
 router.patch("/books/:id", (req, res) => {
     try {
-        const allowedProperties = ["title", "category", "author"];
+        const allowedProperties = [
+            "title",
+            "description",
+            "category",
+            "author"
+        ];
         const properties = Object.keys(req.body);
         //check if the provided properties exists in the object
         const isValid = checkProperty(properties, allowedProperties);
 
         //check the body length and if valid
-        if (properties.length !== 3 || !isValid) {
+        if (properties.length !== 4 || !isValid) {
             return res
                 .status(400)
                 .send({ error: "Invalid or insufficient properties." });
