@@ -4,7 +4,7 @@ let books = [
     {
         id: 1,
         title: "The First World War",
-        description: "This is the history of world ward",
+        description: "This book is about the history of first world war.",
         category: findCategory(2),
         author: "Hew Strachan",
         createdDate: new Date()
