@@ -35,7 +35,9 @@ const updateUser = async (req, res) => {
         );
 
         if (!isValid || incomingProperties.length <= 0) {
-            return res.status(400).send("Invalid properties provided!");
+            return res
+                .status(400)
+                .send({ error: "Invalid properties provided!" });
         }
 
         incomingProperties.forEach((property) => {
