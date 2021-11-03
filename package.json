@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ayxsth/node-training-tasks#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "mongoose": "^6.0.12",
     "postman-request": "^2.88.1-postman.30",
     "validator": "^13.7.0"
