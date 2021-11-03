@@ -7,6 +7,7 @@ In this repository, I have added all the tasks that was assigned in my Node.js t
 -   [Use of Promises](https://github.com/ayxsth/node-training-tasks/tree/master/01-promise)
 -   [Use of Async-Await](https://github.com/ayxsth/node-training-tasks/tree/master/02-async-await)
 -   [Use of REST API using an Array](https://github.com/ayxsth/node-training-tasks/tree/master/03-api-array)
+-   [Song Records API using Mongoose (Project)](https://github.com/ayxsth/node-training-tasks/tree/master/04-song-records-api)
 
 ## Prerequisite
 
