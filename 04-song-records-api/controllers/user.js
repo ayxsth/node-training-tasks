@@ -5,7 +5,8 @@ const saveUser = async (req, res) => {
     const user = new User({ name, email, password });
     try {
         await user.save();
-        res.status(201).send(user);
+        const token = user.generateToken();
+        res.status(201).send({ user, token });
     } catch (e) {
         res.status(400).send({ error: e.message });
     }

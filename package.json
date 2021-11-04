@@ -4,7 +4,8 @@
   "description": "In this repository, I have added all the tasks that was assigned in my Node.js training sessions.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "song-records-api": "env-cmd -f 04-song-records-api/configs/dev.env node 04-song-records-api/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,8 @@
   "homepage": "https://github.com/ayxsth/node-training-tasks#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "env-cmd": "^10.1.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.12",
     "postman-request": "^2.88.1-postman.30",
     "validator": "^13.7.0"

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { isEmail } = require("validator");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -26,6 +27,14 @@ const userSchema = new mongoose.Schema({
         minlength: [6, "Minimum password length is 6 characters!"]
     }
 });
+
+userSchema.methods.generateToken = function () {
+    const user = this;
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: 24 * 60 * 60
+    });
+    return token;
+};
 
 userSchema.methods.toJSON = function () {
     const user = this;
