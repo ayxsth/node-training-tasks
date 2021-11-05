@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 const { User } = require("../models/user");
 
 const saveUser = async (req, res) => {
@@ -7,6 +8,17 @@ const saveUser = async (req, res) => {
         await user.save();
         const token = user.generateToken();
         res.status(201).send({ user, token });
+    } catch (e) {
+        res.status(400).send({ error: e.message });
+    }
+};
+
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await User.findByCredentials(email, password);
+        const token = user.generateToken();
+        res.send({ user, token });
     } catch (e) {
         res.status(400).send({ error: e.message });
     }
@@ -68,6 +80,7 @@ const removeUser = async (req, res) => {
 
 module.exports = {
     saveUser,
+    loginUser,
     getUsers,
     updateUser,
     removeUser

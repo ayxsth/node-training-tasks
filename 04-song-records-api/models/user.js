@@ -36,6 +36,22 @@ userSchema.methods.generateToken = function () {
     return token;
 };
 
+userSchema.statics.findByCredentials = async (email, password) => {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+        throw new Error("Invalid email or password!");
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+        throw new Error("Invalid email or password!");
+    }
+
+    return user;
+};
+
 userSchema.methods.toJSON = function () {
     const user = this;
     const userObject = user.toObject();
