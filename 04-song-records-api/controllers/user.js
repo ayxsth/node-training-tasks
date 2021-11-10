@@ -1,4 +1,5 @@
 const { User } = require("../models/user");
+const validationHandler = require("../handlers/validation");
 
 const saveUser = async (req, res) => {
     const { name, email, password } = req.body;
@@ -8,7 +9,8 @@ const saveUser = async (req, res) => {
         const token = user.generateToken();
         res.status(201).send({ user, token });
     } catch (e) {
-        res.status(400).send({ error: e.message });
+        const error = validationHandler(e);
+        res.status(400).send(error);
     }
 };
 
