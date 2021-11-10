@@ -5,15 +5,16 @@ const {
     updateCategory,
     removeCategory
 } = require("../controllers/category");
+const auth = require("../middleware/auth");
 
 const router = Router();
 
-router.post("/categories", saveCategory);
+router.post("/categories", auth, saveCategory);
 
-router.get("/categories", getCategories);
+router.get("/categories", auth, getCategories);
 
-router.patch("/categories/:id", updateCategory);
+router.patch("/categories/:id", auth, updateCategory);
 
-router.delete("/categories/:id", removeCategory);
+router.delete("/categories/:id", auth, removeCategory);
 
 module.exports = router;
