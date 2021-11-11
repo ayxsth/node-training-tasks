@@ -7,7 +7,7 @@ const handler = (e) => {
         return errors;
     }
 
-    if (e.message.includes("User validation failed")) {
+    if (e.message.includes("validation failed")) {
         Object.values(e.errors).forEach(({ properties }) => {
             const error = {};
             error[properties.path] = properties.message;

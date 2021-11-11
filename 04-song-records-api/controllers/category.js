@@ -1,4 +1,5 @@
 const { Category } = require("../models/category");
+const validationHandler = require("../handlers/validation");
 
 const saveCategory = async (req, res) => {
     const { name } = req.body;
@@ -8,7 +9,8 @@ const saveCategory = async (req, res) => {
         await category.save();
         res.status(201).send(category);
     } catch (e) {
-        res.status(400).send({ error: e.message });
+        const error = validationHandler(e);
+        res.status(400).send(error);
     }
 };
 

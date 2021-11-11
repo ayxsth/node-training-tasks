@@ -1,8 +1,10 @@
 const { Song } = require("../models/song");
 const { Category } = require("../models/category");
+const validationHandler = require("../handlers/validation");
 
 const saveSong = async (req, res) => {
     const { name, category } = req.body;
+
     try {
         if (!(await Category.findById(category))) {
             return res.status(404).send({ error: "Category not found!" });
@@ -11,7 +13,8 @@ const saveSong = async (req, res) => {
         const song = await Song.create({ name, owner: req.user._id, category });
         res.status(201).send(song);
     } catch (e) {
-        res.status(400).send({ error: e.message });
+        const error = validationHandler(e);
+        res.status(400).send(error);
     }
 };
 
