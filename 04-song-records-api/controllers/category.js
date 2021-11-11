@@ -1,12 +1,11 @@
-const { Category } = require("../models/category");
+const Category = require("../models/category");
 const validationHandler = require("../handlers/validation");
 
 const saveCategory = async (req, res) => {
     const { name } = req.body;
-    const category = new Category({ name });
 
     try {
-        await category.save();
+        const category = await Category.create({ name });
         res.status(201).send(category);
     } catch (e) {
         const error = validationHandler(e);

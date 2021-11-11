@@ -1,4 +1,4 @@
-const { User } = require("../models/user");
+const User = require("../models/user");
 const validationHandler = require("../handlers/validation");
 
 const saveUser = async (req, res) => {

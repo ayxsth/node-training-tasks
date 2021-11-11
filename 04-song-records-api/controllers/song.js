@@ -1,5 +1,5 @@
-const { Song } = require("../models/song");
-const { Category } = require("../models/category");
+const Song = require("../models/song");
+const Category = require("../models/category");
 const validationHandler = require("../handlers/validation");
 
 const saveSong = async (req, res) => {
