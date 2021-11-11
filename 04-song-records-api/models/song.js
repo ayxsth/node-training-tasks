@@ -10,7 +10,7 @@ const songSchema = new mongoose.Schema({
         required: true,
         ref: "User"
     },
-    categoryId: {
+    category: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
     }
