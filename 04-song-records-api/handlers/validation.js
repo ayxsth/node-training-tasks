@@ -2,7 +2,11 @@ const handler = (e) => {
     const errors = { error: [] };
 
     if (e.code === 11000) {
-        const error = { email: "Email already in use!" };
+        const error = {};
+        const key = Object.keys(e.keyValue)[0];
+        const value = e.keyValue[key];
+
+        error[key] = `${value} already in use!`;
         errors.error.push(error);
         return errors;
     }
