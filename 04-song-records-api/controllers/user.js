@@ -36,12 +36,6 @@ const getUsers = async (req, res) => {
 
 const updateUser = async (req, res) => {
     try {
-        const user = await User.findById(req.params.id);
-
-        if (!user) {
-            return res.status(404).send({ error: "User not found!" });
-        }
-
         const allowedProperties = ["name", "email", "password"];
         const incomingProperties = Object.keys(req.body);
         const isValid = incomingProperties.every((property) =>
@@ -55,11 +49,11 @@ const updateUser = async (req, res) => {
         }
 
         incomingProperties.forEach((property) => {
-            user[property] = req.body[property];
+            req.user[property] = req.body[property];
         });
 
-        await user.save();
-        res.send(user);
+        await req.user.save();
+        res.send(req.user);
     } catch (e) {
         res.send(500).send({ error: e.message });
     }
@@ -67,13 +61,8 @@ const updateUser = async (req, res) => {
 
 const removeUser = async (req, res) => {
     try {
-        const user = await User.findByIdAndDelete(req.params.id);
-
-        if (!user) {
-            return res.status(404).send({ error: "User not found!" });
-        }
-
-        res.send(user);
+        await req.user.remove();
+        res.send(req.user);
     } catch (e) {
         res.status(500).send({ error: e.message });
     }
