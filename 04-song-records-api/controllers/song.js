@@ -27,6 +27,15 @@ const getSongs = async (req, res) => {
     }
 };
 
+const getMySongs = async (req, res) => {
+    try {
+        await req.user.populate("songs");
+        res.send(req.user.songs);
+    } catch (e) {
+        res.status(500).send({ error: e.message });
+    }
+};
+
 const updateSong = async (req, res) => {
     try {
         const song = await Song.findById(req.params.id);
@@ -88,6 +97,7 @@ const removeSong = async (req, res) => {
 module.exports = {
     saveSong,
     getSongs,
+    getMySongs,
     updateSong,
     removeSong
 };

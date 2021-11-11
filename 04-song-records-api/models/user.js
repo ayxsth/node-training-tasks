@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { isEmail } = require("validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const Song = require("./song");
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -26,6 +27,12 @@ const userSchema = new mongoose.Schema({
         required: [true, "Please enter the password!"],
         minlength: [6, "Minimum password length is 6 characters!"]
     }
+});
+
+userSchema.virtual("songs", {
+    ref: "Song",
+    localField: "_id",
+    foreignField: "owner"
 });
 
 userSchema.methods.generateToken = function () {
@@ -69,6 +76,12 @@ userSchema.pre("save", async function (next) {
         user.password = await bcrypt.hash(user.password, salt);
     }
 
+    next();
+});
+
+userSchema.pre("remove", async function (next) {
+    const user = this;
+    await Song.deleteMany({ owner: user._id });
     next();
 });
 
