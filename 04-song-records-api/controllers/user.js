@@ -55,7 +55,8 @@ const updateUser = async (req, res) => {
         await req.user.save();
         res.send(req.user);
     } catch (e) {
-        res.send(500).send({ error: e.message });
+        const error = validationHandler(e);
+        res.status(500).send(error);
     }
 };
 

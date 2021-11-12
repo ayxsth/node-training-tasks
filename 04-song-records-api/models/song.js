@@ -12,7 +12,7 @@ const songSchema = new mongoose.Schema({
     },
     category: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
+        required: [true, "Please enter the category!"]
     }
 });
 

@@ -39,7 +39,8 @@ const updateCategory = async (req, res) => {
 
         res.send(category);
     } catch (e) {
-        res.status(500).send({ error: e.message });
+        const error = validationHandler(e);
+        res.status(500).send(error);
     }
 };
 

@@ -71,7 +71,8 @@ const updateSong = async (req, res) => {
         await song.save();
         res.send(song);
     } catch (e) {
-        res.status(500).send({ error: e.message });
+        const error = validationHandler(e);
+        res.status(500).send(error);
     }
 };
 
